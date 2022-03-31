@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.edu.greengates.ia_question_app.data.Questions_multiple_choice">
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="413dp"
+        android:layout_height="192dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="354dp">
+
+        <RadioButton
+            android:id="@+id/ans_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ans_a" />
+
+        <RadioButton
+            android:id="@+id/ans_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ans_b" />
+
+        <RadioButton
+            android:id="@+id/ans_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ans_c" />
+
+        <RadioButton
+            android:id="@+id/ans_d"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ans_d" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/topic_1_1"
+            android:contentDescription="TODO" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/questionNum"
+        android:layout_width="61dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginEnd="272dp"
+        android:text="@string/question_count"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.213" />
+
+
+
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="181dp"
+        android:layout_marginBottom="680dp"
+        android:text="@string/text_time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="273dp"
+        android:layout_height="161dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="70dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338"
+        app:srcCompat="@drawable/topic_1_1"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/Question_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/question_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

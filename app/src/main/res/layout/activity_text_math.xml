@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.edu.greengates.ia_question_app.data.Texts_Physics">
+
+
+    <Button
+        android:id="@+id/question_trignometry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginBottom="548dp"
+        android:text="@string/questions_trignometry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/solutions_trignometry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="548dp"
+        android:text="@string/solutions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/question_trignometry"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/questions_algebra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginBottom="495dp"
+        android:text="@string/questions_dif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question_trignometry" />
+
+    <Button
+        android:id="@+id/solutions_algebra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="495dp"
+        android:text="@string/solutions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/questions_algebra"
+        app:layout_constraintTop_toBottomOf="@+id/solutions_trignometry" />
+
+    <Button
+        android:id="@+id/questions_vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginBottom="437dp"
+        android:text="@string/questions_vec"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questions_algebra" />
+
+    <Button
+        android:id="@+id/solutions_vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="437dp"
+        android:text="@string/solutions_vec"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/questions_vector"
+        app:layout_constraintTop_toBottomOf="@+id/solutions_algebra" />
+
+    <Button
+        android:id="@+id/questions_complex_numebr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginBottom="379dp"
+        android:text="@string/questions_comp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questions_vector" />
+
+    <Button
+        android:id="@+id/solutions_complex_numebr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="379dp"
+        android:text="@string/solutions_comp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/questions_complex_numebr"
+        app:layout_constraintTop_toBottomOf="@+id/solutions_vector" />
+
+    <TextView
+        android:id="@+id/text_trignometry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="567dp"
+        android:text="@string/text_trig"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/question_trignometry"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_akgebra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="509dp"
+        android:text="@string/text_alg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/questions_algebra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_trignometry" />
+
+    <TextView
+        android:id="@+id/text_vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="450dp"
+        android:text="@string/text_vec"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/questions_vector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_akgebra" />
+
+    <TextView
+        android:id="@+id/text_complex_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="392dp"
+        android:text="@string/text_comp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/questions_complex_numebr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_vector" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

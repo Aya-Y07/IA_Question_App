@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mx.edu.greengates.ia_question_app">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="IA_Question_App"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.IA_Question_App">
+
+        <activity
+            android:name=".data.Questions_review"
+            android:exported="false" />
+        <activity
+            android:name=".data.Review"
+            android:exported="false" />
+        <activity
+            android:name=".data.Profile"
+            android:exported="false" />
+        <activity
+            android:name=".data.Result"
+            android:exported="false" />
+        <activity
+            android:name=".data.Home"
+            android:exported="false" />
+        <activity
+            android:name=".data.Login"
+            android:exported="false" />
+        <activity
+            android:name=".data.MainActivity"
+            android:exported="true" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+    </application>
+
+</manifest>
