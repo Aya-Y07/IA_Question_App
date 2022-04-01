@@ -7,45 +7,42 @@
     tools:context="mx.edu.greengates.ia_question_app.data.Login">
 
     <EditText
-        android:id="@+id/profile_username"
+        android:id="@+id/input_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="303dp"
-        android:layout_marginBottom="383dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginBottom="490dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Username       "
+        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/input_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="71dp"
-        android:layout_marginBottom="267dp"
-        android:autofillHints=""
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="369dp"
         android:ems="10"
-        android:inputType="numberPassword"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_username"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/input_username" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="144dp"
-        android:text="Log in"
+        android:layout_marginTop="82dp"
+        android:layout_marginBottom="239dp"
+        android:text="@string/btn_log_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,12 +52,11 @@
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="158dp"
         android:text="@string/btn_register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

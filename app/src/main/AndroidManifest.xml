@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IA_Question_App">
         <activity
-            android:name=".profiles"
-            android:exported="false" />
-        <activity
             android:name=".data.Result_Review"
             android:exported="false" />
         <activity

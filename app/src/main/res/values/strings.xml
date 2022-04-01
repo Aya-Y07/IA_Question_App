@@ -25,16 +25,10 @@
     <string name="questions_seq_ser">Questions</string>
     <string name="questions_func">Questions</string>
     <string name="solutions_seq_seri">Solutions</string>
-    <string name="solutions_geo">Solutions</string>
-    <string name="questions_geo">Questions</string>
     <string name="text_trig">Trignometry</string>
-    <string name="text_dif">Differenciation</string>
     <string name="text_vec">Vector</string>
     <string name="text_comp">Complex number</string>
-    <string name="text_pro">Probability</string>
     <string name="text_alg">Algebra</string>
-    <string name="text_seq_seri">Sequences and series</string>
-    <string name="text_geo">Geometry</string>
     <string name="profile_username">Username</string>
     <string name="text_email_address">Email address</string>
     <string name="text_phone_number">Phone number</string>
@@ -48,25 +42,13 @@
     <string name="text_topic_2">Topic 2</string>
     <string name="text_topic_3">Topic 3</string>
     <string name="text_topic_4">Topic 4</string>
-    <string name="text_topic_5">Topic 5</string>
-    <string name="text_topic_6">Topic 6</string>
-    <string name="text_topic_7">Topic 7</string>
-    <string name="text_topic_8">Topic 8</string>
     <string name="solutions_1">Solutions</string>
     <string name="solutions_2">Solutions</string>
     <string name="solutions_3">Solutions</string>
     <string name="solutions_4">Solutions</string>
-    <string name="solutions_5">Solutions</string>
-    <string name="solutions_6">Solutions</string>
-    <string name="solutions_7">Solutions</string>
-    <string name="solutions_8">Solutions</string>
     <string name="questions_1">Questions</string>
     <string name="questions_2">Questions</string>
     <string name="questions_3">Questions</string>
-    <string name="questions_5">Questions</string>
-    <string name="questions_6">Questions</string>
-    <string name="questions_7">Questions</string>
-    <string name="questions_8">Questions</string>
     <string name="text_timer">Please press the button Startto begin your quiz</string>
 
     //for multiple choice
@@ -97,4 +79,5 @@
     <string name="btn_go_next">TODO</string>
     <string name="image_solution_question">TODO</string>
     <string name="image_solution">TODO</string>
+    <string name="questions_4">QUESTIONS</string>
 </resources>
