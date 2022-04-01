@@ -2,7 +2,6 @@ package mx.edu.greengates.ia_question_app.data;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,7 +11,6 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -25,13 +23,13 @@ import java.util.List;
 import mx.edu.greengates.ia_question_app.R;
 import mx.edu.greengates.ia_question_app.data.model.WriteIntoUserCSV;
 
+public class Result_Review extends AppCompatActivity {
 
-public class Result extends AppCompatActivity {
 
-    Questions_multiple_choice results = new Questions_multiple_choice();
-    private List<String> FinishedAns = results.getFinishedAns();
-    private List<String>  FinishedQuestions = results.getFinishedQuestions();
-    private List<String> Result = results.getResult();
+    Questions_review werk_points_results = new Questions_review();
+    List<String>  FinishedReviewQuestions = werk_points_results .getFinishedReviewQuestions();
+    List<String> FinishedReviewAns = werk_points_results .getFinishedReviewAns();
+    List<String> ReviewResult = werk_points_results.getReviewResult();
 
 
     private String page_name;
@@ -62,7 +60,7 @@ public class Result extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.activity_result_review);
 
         Button go_Home = findViewById(R.id.btn_go_home);
         go_Home.setOnClickListener((View.OnClickListener)this);
@@ -82,31 +80,20 @@ public class Result extends AppCompatActivity {
         accuracy_rate.setText(Accuracy_rate);
         totalScore.setText(score);
 
-        String[] userData = {username, String.valueOf(score), String.valueOf(accuracy_rate),time,date,subject};
-        WriteIntoUserCSV writer = new WriteIntoUserCSV(this,"Users_record.csv");
-
-
-        try{
-            writer.writeUserDataCSV("Users_record.csv",userData);
-        }catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
 
         mProgressBar = new ProgressDialog(this);
         mTableLayout = findViewById(R.id.tablePlayers);
         mTableLayout.setStretchAllColumns(true);
         startLoadData();
 
-        int i = FinishedQuestions.size();
+        int i = FinishedReviewQuestions.size();
 
         while ( count > i ){
             list = Collections.singletonList(Arrays.asList(
                     String.valueOf((count + 1)),
-                    FinishedQuestions.get(count),
-                    FinishedAns.get(count),
-                    Result.get(count))
+                    FinishedReviewQuestions.get(count),
+                    FinishedReviewAns.get(count),
+                    ReviewResult.get(count))
 
             );
             count ++;
@@ -138,9 +125,9 @@ public class Result extends AppCompatActivity {
         mTableLayout.removeAllViews();
         // -1 はヘッダー行
         for(int i = -1; i < rows; i ++) {
-             Records row = null;
+            ReviewRecords row = null;
             if (i > -1)
-                row = (Records) list.get(i);
+                row = (ReviewRecords) list.get(i);
             else {
                 textSpacer = new TextView(this);
                 textSpacer.setText("");
@@ -158,7 +145,7 @@ public class Result extends AppCompatActivity {
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             }
             else {
-                tv.setText(String.valueOf(row.getNo()));
+                tv.setText(String.valueOf(row.getReview_no()));
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             }
             // 2列目(Name)
@@ -174,7 +161,7 @@ public class Result extends AppCompatActivity {
                 tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             }
             else {
-                tv2.setText(row.getQuestion());
+                tv2.setText(row.getReview_question());
             }
             // 3列目(Position)
             final TextView tv3 = new TextView(this);
@@ -190,7 +177,7 @@ public class Result extends AppCompatActivity {
             }
             else {
                 tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-                tv3.setText(row.getAnswer());
+                tv3.setText(row.getReview_answer());
             }
             // 4列目(Birth)
             final TextView tv4 = new TextView(this);
@@ -206,7 +193,7 @@ public class Result extends AppCompatActivity {
             }
             else {
                 tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-                tv3.setText(row.getResult());
+                tv3.setText(row.getReview_result());
             }
             // テーブルに行を追加
             final TableRow tr = new TableRow(this);
@@ -265,9 +252,5 @@ public class Result extends AppCompatActivity {
         protected void onProgressUpdate(Integer... values) {
         }
     }
-
-
-
-
 
 }

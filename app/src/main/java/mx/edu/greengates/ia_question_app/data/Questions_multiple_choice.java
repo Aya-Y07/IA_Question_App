@@ -78,7 +78,7 @@ public class Questions_multiple_choice extends AppCompatActivity {
         username = intent.getStringExtra("username");
 
         Intent intent1 = getIntent();
-        subject = intent.getStringExtra("subject");
+        subject = intent1.getStringExtra("subject");
 
         Question_folder quizzes = new Question_folder();
         questions = quizzes.getQuestionList();
@@ -260,10 +260,8 @@ public class Questions_multiple_choice extends AppCompatActivity {
                     Questions_multiple_choice.this.startActivity(myIntent);
 
                     Score = score;
-                    myIntent.putExtra("score", Score);  
+                    myIntent.putExtra("score", Score);
                     startActivity(myIntent);
-
-
 
                     if (null != timer) {
                         timer.cancel();
@@ -312,8 +310,4 @@ public class Questions_multiple_choice extends AppCompatActivity {
         return result;
     }
 
-
-
-
 }
-

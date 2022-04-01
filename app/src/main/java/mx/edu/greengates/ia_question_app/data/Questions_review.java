@@ -270,7 +270,7 @@ public class Questions_review extends AppCompatActivity {
         List<String> finishedans = this.finishedAns;
         return finishedAns;
     }
-    public List<String> getResult(){
+    public List<String> getReviewResult(){
         List<String> result = this.result;
         return result;
     }

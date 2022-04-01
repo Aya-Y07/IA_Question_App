@@ -10,8 +10,10 @@
         <entry key="app/src/main/res/layout/activity_questions_multiple_choice.xml" value="0.2929371577303959" />
         <entry key="app/src/main/res/layout/activity_questions_review.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_record_data.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_result.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_result_review.xml" value="0.29583333333333334" />
         <entry key="app/src/main/res/layout/activity_result_table.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_result_table2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_review.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_solutions.xml" value="0.2177126324078098" />
         <entry key="app/src/main/res/layout/activity_text_math.xml" value="0.1" />
