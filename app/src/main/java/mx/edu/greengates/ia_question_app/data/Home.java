@@ -13,7 +13,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
     private Button math;
     private Button physics;
-    private Button graphs;
     private Button accuracy_rate;
     private Button profile;
     private Button weak_point;
@@ -33,8 +32,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         physics = (Button) findViewById(R.id.btn_physics);
         physics.setOnClickListener((View.OnClickListener)this);
 
-        graphs = (Button) findViewById(R.id.btn_graphs);
-        graphs.setOnClickListener((View.OnClickListener)this);
 
         accuracy_rate = (Button) findViewById(R.id.btn_accuracy_rate);
         accuracy_rate.setOnClickListener((View.OnClickListener)this);
@@ -58,11 +55,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
-        if(v == graphs){
-            Intent myIntent = new Intent(Home.this, graph_page.class);
-            myIntent.putExtra("username",username);
-            startActivity(myIntent);
-        }
+
         if (v== profile);{
             Intent myIntent = new Intent(Home.this, Profile.class);
             myIntent.putExtra("username",username);
