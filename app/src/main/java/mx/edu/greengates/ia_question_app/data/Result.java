@@ -136,7 +136,7 @@ public class Result extends AppCompatActivity {
         getSupportActionBar().setTitle("Players (" + String.valueOf(rows) + ")");
         TextView textSpacer = null;
         mTableLayout.removeAllViews();
-        // -1 はヘッダー行
+
         for(int i = -1; i < rows; i ++) {
              Records row = null;
             if (i > -1)
@@ -145,7 +145,7 @@ public class Result extends AppCompatActivity {
                 textSpacer = new TextView(this);
                 textSpacer.setText("");
             }
-            // 1列目(No)
+
             final TextView tv = new TextView(this);
             tv.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -161,7 +161,7 @@ public class Result extends AppCompatActivity {
                 tv.setText(String.valueOf(row.getNo()));
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             }
-            // 2列目(Name)
+
             final TextView tv2 = new TextView(this);
             tv2.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -176,7 +176,7 @@ public class Result extends AppCompatActivity {
             else {
                 tv2.setText(row.getQuestion());
             }
-            // 3列目(Position)
+
             final TextView tv3 = new TextView(this);
             tv3.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -192,7 +192,7 @@ public class Result extends AppCompatActivity {
                 tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
                 tv3.setText(row.getAnswer());
             }
-            // 4列目(Birth)
+
             final TextView tv4 = new TextView(this);
             tv3.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -208,7 +208,7 @@ public class Result extends AppCompatActivity {
                 tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
                 tv3.setText(row.getResult());
             }
-            // テーブルに行を追加
+
             final TableRow tr = new TableRow(this);
             tr.setId(i + 1);
             TableLayout.LayoutParams trParams = new
@@ -222,7 +222,7 @@ public class Result extends AppCompatActivity {
             tr.addView(tv3);
             tr.addView(tv4);
             mTableLayout.addView(tr, trParams);
-            // 罫線を追加
+
             if (i > -1) {
                 final TableRow trSep = new TableRow(this);
                 TableLayout.LayoutParams trParamsSep = new
