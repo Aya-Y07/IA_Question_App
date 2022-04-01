@@ -75,7 +75,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
 
             }if (view == btn_go_back) {
-            if (confirm == "L") {
+            if (confirm.compareTo("L") == 0) {
                 Intent myIntent = new Intent(Profile.this, Login.class);
                 Profile.this.startActivity(myIntent);
             } else {

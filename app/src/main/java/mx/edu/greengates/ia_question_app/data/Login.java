@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -52,9 +53,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         try{
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
             digest.reset();
-            digest.update(password.getBytes("utf8"));
-            token = String.format("%040x", new BigInteger(1,digest.digest()));//BingInteger 整数値を格納するためのクラス
-
+            digest.update(password.getBytes(StandardCharsets.UTF_8));
+            token = String.format("%040x", new BigInteger(1,digest.digest()));
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -103,7 +103,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         if(v == login && checkCredentials(user,pass)){
             Intent myIntent = new Intent(Login.this, Home.class);
-            myIntent.putExtra("progress", 50);
             Login.this.startActivity(myIntent);
 
         }if (v == register){
