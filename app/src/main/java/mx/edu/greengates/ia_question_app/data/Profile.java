@@ -24,6 +24,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         private EditText profile_phone_number;
         private Button submitBtn;
         private Button btn_go_back;
+        private String confirm = "";
 
 
 
@@ -31,6 +32,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_profile);
+
+            Intent intent = getIntent();
+            confirm = intent.getStringExtra("login");
 
 
             submitBtn = (Button) findViewById(R.id.btn_profile_submit);
@@ -70,10 +74,16 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
 
 
-            }if (view == btn_go_back){
+            }if (view == btn_go_back) {
+            if (confirm == "L") {
+                Intent myIntent = new Intent(Profile.this, Login.class);
+                Profile.this.startActivity(myIntent);
+            } else {
                 Intent myIntent = new Intent(Profile.this, Home.class);
                 Profile.this.startActivity(myIntent);
+            }
         }
+
 
 
 

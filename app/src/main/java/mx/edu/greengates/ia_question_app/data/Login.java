@@ -109,6 +109,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }if (v == register){
             Intent myIntent = new Intent(Login.this, Profile.class);
             Login.this.startActivity(myIntent);
+            String login = "L";
+            myIntent.putExtra("login", login);
     }return;
 
     }
