@@ -16,9 +16,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +32,8 @@ import java.util.Random;
 import java.util.StringTokenizer;
 
 import mx.edu.greengates.ia_question_app.R;
+import mx.edu.greengates.ia_question_app.data.model.Mistaken_question;
+import mx.edu.greengates.ia_question_app.data.model.Question;
 import mx.edu.greengates.ia_question_app.data.model.Question_folder;
 
 public class Questions_review extends AppCompatActivity {
@@ -54,6 +60,9 @@ public class Questions_review extends AppCompatActivity {
     private List<String> finishedQuestions;
     private List<String> finishedAns;
     private List<StringTokenizer> QuestionLists;
+    int listNum = 0;
+    private String Question;
+    private String Answer;
 
 
     ImageView imageView = findViewById(R.id.review_image);
@@ -115,7 +124,7 @@ public class Questions_review extends AppCompatActivity {
 
     public void ListOfReview() {
 
-        int listNum = review_questions.size();
+        listNum = review_questions.size();
         int i = 0;
         while (i < listNum ){
             if (review_questions.get(0).equals(username) && review_questions.get(2).equals(subject)){
@@ -132,7 +141,7 @@ public class Questions_review extends AppCompatActivity {
         int length_of_questions = QuestionLists.size();
         while(count < length){
             while(count1 < length_of_questions){
-                if(questionList.get(count).equals(QuestionLists.get(count1).nextToken(String.valueOf(0)))){
+                if(questionList.get(count).equals(QuestionLists.get(count1).nextToken(String.valueOf(1)))){
 
                     quiz = Arrays.asList(
                             Arrays.asList(
@@ -162,8 +171,8 @@ public class Questions_review extends AppCompatActivity {
 
         Random r = new Random();
         int randomNum = r.nextInt(quizLength);
-        String Question = quiz.get(randomNum).get(1);
-        String Answer = quiz.get(randomNum).get(2);
+        Question = quiz.get(randomNum).get(1);
+        Answer = quiz.get(randomNum).get(2);
 
         if(Question.contains("img: ")){
             String quizText = Question;
@@ -222,6 +231,26 @@ public class Questions_review extends AppCompatActivity {
             score += 1;
             notification = "correct";
             result.add("○");
+
+            int i = 0;
+            while (i < listNum){
+                if (review_questions.get(i).nextToken(String.valueOf(1)).equals(Question)){
+                    review_questions.remove(review_questions.get(i));
+                    i++;
+                }
+            }
+            int count =0;
+            try {
+                FileWriter file = new FileWriter("Questions.csv");
+                PrintWriter pw = new PrintWriter(new BufferedWriter(file));
+                while (listNum > count){
+                    pw.println(review_questions.get(count));
+                    count++;
+                }
+                pw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
         } else {

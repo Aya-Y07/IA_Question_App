@@ -6,7 +6,7 @@ public class Mistaken_question {
     private String username;
     private String subject;
 
-    public Mistaken_question(String id, String username, String subject){
+    public Mistaken_question(String username, String id,String subject){
 
         this.id = id;
         this.username = username;
@@ -20,6 +20,6 @@ public class Mistaken_question {
 
     @Override
     public String toString(){
-        return "Question{" + "id ='" + id + '\'' + ", User Name = '" + username  + '\'' + ", Subject = '" + subject  + '\'' + '}';
+        return "Question{" + ", User Name = '" + username  + '\'' + "id ='" + id + '\''  + ", Subject = '" + subject  + '\'' + '}';
     }
 }

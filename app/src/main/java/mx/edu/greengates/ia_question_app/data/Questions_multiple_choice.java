@@ -233,6 +233,7 @@ public class Questions_multiple_choice extends AppCompatActivity {
             score += 1;
             notification = "correct";
             result.add("○");
+
         }else{
             notification = "incorrect";
             result.add("×");
