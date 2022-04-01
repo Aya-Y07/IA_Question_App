@@ -59,7 +59,7 @@
     <string name="finish">Finish</string>
     <string name="next">NEXT</string>
     <string name="btn_start">Start</string>
-    <string name="btn_next">TODO</string>
+    <string name="btn_next">NEXT</string>
     <string name="question_count">Q%d</string>
     <string name="question_text">Text</string>
     <string name="go_to_home">Go to home</string>
@@ -75,8 +75,8 @@
     <string name="textview">TextView</string>
     <string name="text_solution_ans">TextView</string>
     <string name="text_solution_question">TextView</string>
-    <string name="btn_go_back">TODO</string>
-    <string name="btn_go_next">TODO</string>
+    <string name="btn_go_back">GO Back</string>
+    <string name="btn_go_next">NEXT</string>
     <string name="image_solution_question">TODO</string>
     <string name="image_solution">TODO</string>
     <string name="questions_4">QUESTIONS</string>
