@@ -4,7 +4,6 @@
     <string name="btn_math">Mathematics</string>
     <string name="btn_physics">Physics</string>
     <string name="text_records">Records</string>
-    <string name="btn_graphs">Graphs</string>
     <string name="text_accuracy_rate">Accuracy rate</string>
     <string name="text_others">Others</string>
     <string name="btn_profile">Profile</string>
