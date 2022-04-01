@@ -42,7 +42,7 @@ public class Result_Review extends AppCompatActivity {
 
 
     private TableLayout mTableLayout;
-    ProgressDialog mProgressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class Result_Review extends AppCompatActivity {
         totalScore.setText(score);
 
 
-        mProgressBar = new ProgressDialog(this);
+
         mTableLayout = findViewById(R.id.tablePlayers);
         mTableLayout.setStretchAllColumns(true);
         startLoadData();
@@ -102,10 +102,7 @@ public class Result_Review extends AppCompatActivity {
 
 
     public void startLoadData() {
-        mProgressBar.setCancelable(false);
-        mProgressBar.setMessage("Fetching Players..");
-        mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        mProgressBar.show();
+
         new LoadDataTask().execute(0);
     }
     public void loadData() {
@@ -120,7 +117,6 @@ public class Result_Review extends AppCompatActivity {
 
 
         int rows = list.size();
-        getSupportActionBar().setTitle("Players (" + String.valueOf(rows) + ")");
         TextView textSpacer = null;
         mTableLayout.removeAllViews();
 
@@ -242,7 +238,6 @@ public class Result_Review extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-            mProgressBar.hide();
             loadData();
         }
         @Override

@@ -2,8 +2,6 @@ package mx.edu.greengates.ia_question_app.data;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -33,8 +31,6 @@ public class Result extends AppCompatActivity {
     private List<String>  FinishedQuestions = results.getFinishedQuestions();
     private List<String> Result = results.getResult();
 
-
-    private String page_name;
     private String username;
     private String subject;
     private String time;
@@ -42,23 +38,20 @@ public class Result extends AppCompatActivity {
     private int count = 0;
     private List<List<String>> list = null;
 
-
     private TableLayout mTableLayout;
-    ProgressDialog mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         Intent intent = getIntent();
-        page_name = intent.getStringExtra("Page Name");
-        Intent intent1 = getIntent();
         username = intent.getStringExtra("Username");
+        Intent intent1 = getIntent();
+        subject = intent1.getStringExtra("Subject");
         Intent intent2 = getIntent();
-        subject = intent.getStringExtra("Subject");
+        time = intent2.getStringExtra("Time");
         Intent intent3 = getIntent();
-        time = intent.getStringExtra("Time");
-        Intent intent4 = getIntent();
-        date = intent.getStringExtra("Date");
+        date = intent3.getStringExtra("Date");
 
 
         super.onCreate(savedInstanceState);
@@ -94,7 +87,6 @@ public class Result extends AppCompatActivity {
 
         }
 
-        mProgressBar = new ProgressDialog(this);
         mTableLayout = findViewById(R.id.tablePlayers);
         mTableLayout.setStretchAllColumns(true);
         startLoadData();
@@ -115,10 +107,6 @@ public class Result extends AppCompatActivity {
 
 
     public void startLoadData() {
-        mProgressBar.setCancelable(false);
-        mProgressBar.setMessage("Fetching Players..");
-        mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        mProgressBar.show();
         new LoadDataTask().execute(0);
     }
     public void loadData() {
@@ -255,7 +243,6 @@ public class Result extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-            mProgressBar.hide();
             loadData();
         }
         @Override
