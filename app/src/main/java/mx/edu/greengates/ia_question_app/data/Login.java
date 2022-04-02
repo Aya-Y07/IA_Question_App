@@ -13,15 +13,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import mx.edu.greengates.ia_question_app.R;
-import mx.edu.greengates.ia_question_app.data.model.loginCred;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -53,76 +50,66 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    private void encrypted(){
+    private void encrypted() {
 
 
-        try{
+        try {
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
             encryptedPass = digest.digest(pass.getBytes(StandardCharsets.UTF_8));
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private boolean checkCredentials(){
+    private boolean checkCredentials() {
         validCredential = false;
         AssetManager assetManager = getAssets();
         InputStream is = null;
-        try{
+        try {
             is = assetManager.open("users.csv");
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         BufferedReader reader = null;
         reader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-        String line ="" ;
+        String line = "";
         StringTokenizer st = null;
-        try{
-            while((line = reader.readLine())!=null){
-                st = new StringTokenizer(line,",");
+        try {
+            while ((line = reader.readLine()) != null) {
+                st = new StringTokenizer(line, ",");
                 String username = st.nextToken();
                 String password = st.nextToken();
-                if (user.compareTo(username) == 0 && encryptedPass.equals(password)){
+                if (user.compareTo(username) == 0 && encryptedPass.equals(password)) {
                     validCredential = true;
                     break;
                 }
 
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return validCredential;
 
     }
 
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
 
-        if((v == login && validCredential == true)){
+        if ((v == login && validCredential == true)) {
             Intent myIntent = new Intent(Login.this, Home.class);
             Login.this.startActivity(myIntent);
 
-        }if (v == register){
+        }
+        if (v == register) {
             Intent myIntent = new Intent(Login.this, Profile.class);
             Login.this.startActivity(myIntent);
             String login = "L";
             myIntent.putExtra("login", login);
-    }return;
+        }
+        return;
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+

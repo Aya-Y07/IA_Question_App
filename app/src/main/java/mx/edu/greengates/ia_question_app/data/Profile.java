@@ -9,19 +9,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-
 import mx.edu.greengates.ia_question_app.R;
-import mx.edu.greengates.ia_question_app.data.model.WriteIntoUserCSV;
-
 
 public class Profile extends AppCompatActivity implements View.OnClickListener {
         private EditText profile_username;
@@ -88,7 +82,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Finish");
-                builder.setMessage("Your account is saved. please press go ack");
+                builder.setMessage("Your account is saved.");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -105,15 +99,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 builder.show();
             }
 
-
-
-
-
-
     }
-
-
-
-
 
 }
