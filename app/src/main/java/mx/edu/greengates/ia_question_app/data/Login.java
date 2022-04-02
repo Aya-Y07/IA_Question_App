@@ -29,6 +29,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText password;
     private Button login;
     private Button register;
+    private String user;
+    private String pass;
+    private boolean validCredential;
+    private byte[] encryptedPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,28 +48,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         register = (Button) findViewById(R.id.btn_register);
         register.setOnClickListener(this);
 
+        user = String.valueOf(username.getText());
+        pass = String.valueOf(password.getText());
+
     }
 
-    private String password(String password){
+    private void encrypted(){
 
-        String token = "";
 
         try{
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
-            digest.reset();
-            digest.update(password.getBytes(StandardCharsets.UTF_8));
-            token = String.format("%040x", new BigInteger(1,digest.digest()));
+            encryptedPass = digest.digest(pass.getBytes(StandardCharsets.UTF_8));
         }catch(Exception e){
             e.printStackTrace();
         }
-        return token;
 
     }
 
-    private boolean checkCredentials(String user, String pass){
-        boolean validCredential = false;
-        String encryptedPass = password(pass);
-        ArrayList<loginCred> objList = new ArrayList<loginCred>();
+    private boolean checkCredentials(){
+        validCredential = false;
         AssetManager assetManager = getAssets();
         InputStream is = null;
         try{
@@ -82,8 +83,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 st = new StringTokenizer(line,",");
                 String username = st.nextToken();
                 String password = st.nextToken();
-                System.out.println(password + " : " + encryptedPass);
-                if (user.compareTo(username) == 0 && encryptedPass.compareToIgnoreCase(password) == 0){
+                if (user.compareTo(username) == 0 && encryptedPass.equals(password)){
                     validCredential = true;
                     break;
                 }
@@ -98,10 +98,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     public void onClick(View v)
     {
-        String user = String.valueOf(username.getText());
-        String pass = String.valueOf(password.getText());
 
-        if(v == login && checkCredentials(user,pass)){
+        if((v == login && validCredential == true)){
             Intent myIntent = new Intent(Login.this, Home.class);
             Login.this.startActivity(myIntent);
 

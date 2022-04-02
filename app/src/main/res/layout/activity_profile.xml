@@ -6,93 +6,45 @@
     android:layout_height="match_parent"
     tools:context="mx.edu.greengates.ia_question_app.data.Profile">
 
+
     <TextView
         android:id="@+id/txt_profile_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_username"
-        app:layout_constraintBottom_toTopOf="@+id/txt_profile_firstname"
+        app:layout_constraintBottom_toTopOf="@+id/text_profile_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.572" />
 
     <EditText
         android:id="@+id/profile_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/profile_firstname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txt_profile_username"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/txt_profile_firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_first_name"
-        app:layout_constraintBottom_toTopOf="@+id/text_profile_surname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_profile_username"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/profile_firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/profile_surname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.602"
-        app:layout_constraintStart_toEndOf="@+id/txt_profile_firstname"
-        app:layout_constraintTop_toBottomOf="@+id/profile_username"
-        app:layout_constraintVertical_bias="0.094" />
-
-    <TextView
-        android:id="@+id/text_profile_surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_surname"
-        app:layout_constraintBottom_toTopOf="@+id/text_profile_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_profile_firstname"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/profile_surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/profile_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.725"
-        app:layout_constraintStart_toEndOf="@+id/text_profile_surname"
-        app:layout_constraintTop_toBottomOf="@+id/profile_firstname"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/txt_profile_username"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.602"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/text_profile_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_password"
-        app:layout_constraintBottom_toTopOf="@+id/text_profile_email"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile_surname"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532" />
 
     <EditText
         android:id="@+id/profile_password"
@@ -101,87 +53,26 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/profile_email_address"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintHorizontal_bias="0.371"
         app:layout_constraintStart_toEndOf="@+id/text_profile_password"
-        app:layout_constraintTop_toBottomOf="@+id/profile_surname"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/text_profile_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_email_address"
-        app:layout_constraintBottom_toTopOf="@+id/text_profile_phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile_password"
-        app:layout_constraintVertical_bias="0.307" />
-
-    <EditText
-        android:id="@+id/profile_email_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/prodfile_phone_number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_profile_email"
-        app:layout_constraintTop_toBottomOf="@+id/profile_password"
-        app:layout_constraintVertical_bias="0.086" />
-
-    <TextView
-        android:id="@+id/text_profile_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_phone_number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile_email" />
-
-    <EditText
-        android:id="@+id/prodfile_phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
-        app:layout_constraintStart_toEndOf="@+id/text_profile_phone"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email_address" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn_profile_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="252dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="161dp"
         android:text="@string/btn_submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile_phone" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
 
-    <Button
-        android:id="@+id/btn_go_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/btn_go_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_profile_submit"
-        app:layout_constraintTop_toBottomOf="@+id/prodfile_phone_number" />
 </androidx.constraintlayout.widget.ConstraintLayout>

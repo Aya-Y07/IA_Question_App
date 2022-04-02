@@ -1,9 +1,17 @@
 package mx.edu.greengates.ia_question_app.data;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,13 +26,11 @@ import mx.edu.greengates.ia_question_app.data.model.WriteIntoUserCSV;
 public class Profile extends AppCompatActivity implements View.OnClickListener {
         private EditText profile_username;
         private EditText profile_password;
-        private EditText profile_surname;
-        private EditText profile_first_name;
-        private EditText profile_email_address;
-        private EditText profile_phone_number;
         private Button submitBtn;
-        private Button btn_go_back;
         private String confirm = "";
+        private String username;
+        private String password;
+        private byte[] b;
 
 
 
@@ -40,49 +46,66 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             submitBtn = (Button) findViewById(R.id.btn_profile_submit);
             profile_username = (EditText) findViewById(R.id.profile_username);
             profile_password = (EditText) findViewById(R.id.profile_password);
-            profile_surname = (EditText) findViewById(R.id.profile_surname);
-            profile_first_name = (EditText) findViewById(R.id.profile_firstname);
-            profile_email_address = (EditText) findViewById(R.id.profile_email_address);
-            profile_phone_number = (EditText) findViewById(R.id.prodfile_phone_number);
-            btn_go_back = (Button) findViewById(R.id.btn_go_back);
 
             submitBtn.setOnClickListener(this);
-            btn_go_back.setOnClickListener(this);
+
+
+            username = profile_username.getText().toString();
+            password = profile_password.getText().toString();
+
         }
 
-    @Override
+    public void encryptedpasswid(){
+            try{
+                MessageDigest digest = MessageDigest.getInstance("SHA-1");
+                b = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
+    }
     public void onClick(View view) {
+
+
+
             if (view == submitBtn){
-                String username = profile_username.getText().toString();
-                String firstname = profile_first_name.getText().toString();
-                String surname = profile_surname.getText().toString();
-                String password = profile_password.getText().toString();
-                String email = profile_email_address.getText().toString();
-                String phoneNumber = profile_phone_number.getText().toString();
+
+                try {
+
+                    FileWriter fw = new FileWriter("users.csv", true);
+                    PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
 
 
-                String[] userData = {username,firstname,surname,password,email,phoneNumber};
-                WriteIntoUserCSV writer = new WriteIntoUserCSV(this,"users.csv");
+                    pw.print(username);
+                    pw.print(",");
+                    pw.print(b);
 
-                try{
-                    writer.writeUserDataCSV("users.csv",userData);
-                }catch (IOException e) {
+                    pw.close();
 
-                    e.printStackTrace();
 
+                } catch (IOException ex) {
+                    ex.printStackTrace();
                 }
 
-
-
-            }if (view == btn_go_back) {
-            if (confirm.compareTo("L") == 0) {
-                Intent myIntent = new Intent(Profile.this, Login.class);
-                Profile.this.startActivity(myIntent);
-            } else {
-                Intent myIntent = new Intent(Profile.this, Home.class);
-                Profile.this.startActivity(myIntent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Finish");
+                builder.setMessage("Your account is saved. please press go ack");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (confirm.compareTo("L") == 0) {
+                            Intent myIntent = new Intent(Profile.this, Login.class);
+                            Profile.this.startActivity(myIntent);
+                        } else {
+                            Intent myIntent = new Intent(Profile.this, Home.class);
+                            Profile.this.startActivity(myIntent);
+                        }
+                    }
+                });
+                builder.setCancelable(false);
+                builder.show();
             }
-        }
+
+
 
 
 

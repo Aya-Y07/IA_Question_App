@@ -15,13 +15,9 @@ import java.util.StringTokenizer;
 public class User_folder {
 
 //    public final int UserID = 0;
-    public final int UserID = 1;
-    public final int UserName = 2;
-    public final int Password = 3;
-    public final int  Surname = 4;
-    public final int FirstName = 5;
-    public final int Email = 6;
-    public final int Phone_number = 7;
+    public final int UserName = 1;
+    public final int Password = 2;
+
 
     Context context;
 
@@ -80,13 +76,9 @@ public class User_folder {
                 if(numLine > 0){
                     st = new StringTokenizer(line,",");
 
-                    String UserID = st.nextToken();
                     String USERNAME = st.nextToken();
                     String PASSWORD = st.nextToken();
-                    String FIRST_NAME = st.nextToken();
-                    String SURNAME = st.nextToken();
-                    String EMIL = st.nextToken();
-                    String PHONE_NUMBER = st.nextToken();
+
 
                 }
             }
@@ -102,15 +94,11 @@ public class User_folder {
         int rowNum = 0;
         for (String[] row : document_user) {
             if (rowNum > 0) {
-                String userId = row[UserID];
+
                 String userName = row[UserName];
                 String password = row[Password];
-                String firstname = row[FirstName];
-                String surname = row[Surname];
-                String email = row[Email];
-                String phoneNumber = row[Phone_number];
 
-                User userObj = new User(userId,userName,password,firstname,surname,email,phoneNumber);
+                User userObj = new User(userName,password);
                 userList.add(userObj);
             }
             rowNum++;
