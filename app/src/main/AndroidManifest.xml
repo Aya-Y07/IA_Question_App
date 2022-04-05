@@ -28,6 +28,12 @@
             android:name=".data.Home"
             android:exported="false" />
         <activity
+            android:name=".data.Texts_Math"
+            android:exported="false" />
+        <activity
+            android:name=".data.Texts_Physics"
+            android:exported="false" />
+        <activity
             android:name=".data.Login"
             android:exported="true">
             <intent-filter>
