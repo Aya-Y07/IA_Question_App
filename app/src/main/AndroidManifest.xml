@@ -3,6 +3,7 @@
     package="mx.edu.greengates.ia_question_app">
 
     <application
+        android:name=".data.model.Results"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="IA_Question_App"
@@ -10,10 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IA_Question_App">
         <activity
+            android:name=".data.Result"
+            android:exported="false" />
+        <activity
             android:name=".data.Result_Review"
             android:exported="false" />
         <activity
             android:name=".data.Questions_review"
+            android:exported="false" />
+        <activity
+            android:name=".data.Questions_multiple_choice"
             android:exported="false" />
         <activity
             android:name=".data.Review"
@@ -22,7 +29,7 @@
             android:name=".data.Profile"
             android:exported="false" />
         <activity
-            android:name=".data.Result"
+            android:name=".data.Solutions"
             android:exported="false" />
         <activity
             android:name=".data.Home"

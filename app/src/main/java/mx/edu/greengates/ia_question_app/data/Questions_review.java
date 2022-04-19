@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,8 +31,6 @@ import java.util.Random;
 import java.util.StringTokenizer;
 
 import mx.edu.greengates.ia_question_app.R;
-import mx.edu.greengates.ia_question_app.data.model.Mistaken_question;
-import mx.edu.greengates.ia_question_app.data.model.Question;
 import mx.edu.greengates.ia_question_app.data.model.Question_folder;
 
 public class Questions_review extends AppCompatActivity {
@@ -59,7 +56,7 @@ public class Questions_review extends AppCompatActivity {
     private int quizLength = 0;
     private List<String> finishedQuestions;
     private List<String> finishedAns;
-    private List<StringTokenizer> QuestionLists;
+    private String[][] QuestionLists;
     int listNum = 0;
     private String Question;
     private String Answer;
@@ -80,7 +77,7 @@ public class Questions_review extends AppCompatActivity {
         subject = intent1.getStringExtra("Subject");
 
         Question_folder quizzes = new Question_folder();
-        QuestionLists = quizzes.getQuestionList();
+        QuestionLists = quizzes.getQuestions();
 
 
         score = 0;
@@ -138,19 +135,19 @@ public class Questions_review extends AppCompatActivity {
         int length = questionList.size();
         int count = 0;
         int count1 = 0;
-        int length_of_questions = QuestionLists.size();
+        int length_of_questions = QuestionLists.length;
         while(count < length){
             while(count1 < length_of_questions){
-                if(questionList.get(count).equals(QuestionLists.get(count1).nextToken(String.valueOf(1)))){
+                if(questionList.get(count).equals(QuestionLists[count1][1])){
 
                     quiz = Arrays.asList(
                             Arrays.asList(
-                                    QuestionLists.get(count1).nextToken(String.valueOf(1)),
-                                    QuestionLists.get(count1).nextToken(String.valueOf(2)),
-                                    QuestionLists.get(count1).nextToken(String.valueOf(3)),
-                                    QuestionLists.get(count1).nextToken(String.valueOf(4)),
-                                    QuestionLists.get(count1).nextToken(String.valueOf(5)),
-                                    QuestionLists.get(count1).nextToken(String.valueOf(6)))
+                                    QuestionLists[count1][1],
+                                    QuestionLists[count1][2],
+                                    QuestionLists[count1][3],
+                                    QuestionLists[count1][4],
+                                    QuestionLists[count1][5],
+                                    QuestionLists[count1][6])
                     );
                     break;
                 }else{
@@ -241,7 +238,7 @@ public class Questions_review extends AppCompatActivity {
             }
             int count =0;
             try {
-                FileWriter file = new FileWriter("Questions.csv");
+                FileWriter file = new FileWriter("questions.csv");
                 PrintWriter pw = new PrintWriter(new BufferedWriter(file));
                 while (listNum > count){
                     pw.println(review_questions.get(count));

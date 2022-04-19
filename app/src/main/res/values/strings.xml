@@ -80,4 +80,9 @@
     <string name="image_solution_question">TODO</string>
     <string name="image_solution">TODO</string>
     <string name="questions_4">QUESTIONS</string>
+
+    <string name="question_label">Question</string>
+    <string name="count_label">Q%d</string>
+    <string name="answer_btn">Choices</string>
+    <string name="result_score">%d / 4</string>
 </resources>

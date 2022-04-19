@@ -7,6 +7,9 @@ public class Records {
     private String answer;
     private String result;
 
+    public Records(int count, Object s, Object s1, Object s2) {
+    }
+
     public void UserRecord(
             String no,
             String question,

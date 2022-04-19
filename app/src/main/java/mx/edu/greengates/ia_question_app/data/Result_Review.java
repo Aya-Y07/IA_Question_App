@@ -2,7 +2,6 @@ package mx.edu.greengates.ia_question_app.data;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -15,13 +14,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import mx.edu.greengates.ia_question_app.R;
-import mx.edu.greengates.ia_question_app.data.model.WriteIntoUserCSV;
 
 public class Result_Review extends AppCompatActivity {
 
@@ -65,8 +62,6 @@ public class Result_Review extends AppCompatActivity {
         Button go_Home = findViewById(R.id.btn_go_home);
         go_Home.setOnClickListener((View.OnClickListener)this);
 
-        TextView accuracy_rate = findViewById(R.id.accuracy_rate);
-        TextView totalScore = findViewById(R.id.score);
 
         TableLayout tableLayout = findViewById(R.id.tablelayout);
         tableLayout.removeAllViews();
@@ -76,10 +71,6 @@ public class Result_Review extends AppCompatActivity {
 
         int Accuracy_rate;
         Accuracy_rate = (score/4)*100;
-
-        accuracy_rate.setText(Accuracy_rate);
-        totalScore.setText(score);
-
 
 
         mTableLayout = findViewById(R.id.tablePlayers);

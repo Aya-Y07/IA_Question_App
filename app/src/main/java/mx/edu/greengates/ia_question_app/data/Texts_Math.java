@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -62,77 +63,73 @@ public class Texts_Math extends AppCompatActivity implements View.OnClickListene
         String quiz = "";
 
         if(v == trig){
+            Log.d("Math"," trig button");
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
             quiz = "trig";
             myIntent.putExtra("Quiz", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
-            startActivity(myIntent);
             myIntent.putExtra("subject",subject);
             startActivity(myIntent);
 
         }
         if(v == alg){
+            Log.d("Math"," alg button");
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
             quiz = "alg";
             myIntent.putExtra("Quiz", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
-            startActivity(myIntent);
             myIntent.putExtra("subject",subject);
             startActivity(myIntent);
         }
         if(v == vec){
+            Log.d("Math","vec button");
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
             quiz = "vec";
             myIntent.putExtra("Quiz", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
-            startActivity(myIntent);
             myIntent.putExtra("subject",subject);
             startActivity(myIntent);
         }
         if(v == comp){
+            Log.d("Math","comp button");
             Intent myIntent = new Intent(Texts_Math.this, Questions_multiple_choice.class);
             quiz = "comp";
             myIntent.putExtra("Quiz", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
-            startActivity(myIntent);
             myIntent.putExtra("subject",subject);
             startActivity(myIntent);
         }
 
 
         if(v == ans_trig){
+            Log.d("Math","solution_trig button");
             Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
             quiz = "trig";
             myIntent.putExtra("Solution", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == ans_dif){
+            Log.d("Math","solution_dif button");
             Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
             quiz = "dif";
             myIntent.putExtra("Solution", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == ans_vec){
+            Log.d("Math","solution_vec button");
             Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
             quiz = "vec";
             myIntent.putExtra("Solution", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
             startActivity(myIntent);
         }
         if(v == ans_comp){
+            Log.d("Math","solution_comp button");
             Intent myIntent = new Intent(Texts_Math.this, Solutions.class);
             quiz = "comp";
             myIntent.putExtra("Solution", quiz);
-            startActivity(myIntent);
             myIntent.putExtra("username",username);
             startActivity(myIntent);
         }

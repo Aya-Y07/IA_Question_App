@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dvazquez/AndroidStudioProjects/IA_Question_App/app/src/main/res/layout/activity_home.xml" value="0.15" />
+        <entry key="..\:/Users/dvazquez/AndroidStudioProjects/IA_Question_App/app/src/main/res/layout/activity_questions_multiple_choice.xml" value="0.1953125" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_graph_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />

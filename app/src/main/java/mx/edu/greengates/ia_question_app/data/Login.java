@@ -1,3 +1,4 @@
+
 package mx.edu.greengates.ia_question_app.data;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -5,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -84,7 +86,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         BufferedReader buffReader = null;
         try {
             String sCurrentLine;
-            File file = new File(this.getFilesDir(), "users.csv");
+            File file = new File(this.getFilesDir(), "users.csv");//get user data from users.csv
             FileReader fileReader = new FileReader(file);
             buffReader = new BufferedReader(fileReader);
             while ((sCurrentLine = buffReader.readLine()) != null) {
@@ -116,9 +118,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             String encryptedPass = encrypted(pass);
             boolean valid = checkCredentials(user, encryptedPass);
             if (valid) {
+                Log.d("Login","Home button");
                 Intent myIntent = new Intent(Login.this, Home.class);
                 Login.this.startActivity(myIntent);
             } else {
+                Log.d("Login","Profile button");
                 Intent myIntent = new Intent(Login.this, Profile.class);
                 String login = "L";
                 myIntent.putExtra("login", login);
@@ -138,5 +142,3 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
 }
-
-

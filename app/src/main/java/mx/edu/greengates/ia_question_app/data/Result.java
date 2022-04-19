@@ -2,113 +2,74 @@ package mx.edu.greengates.ia_question_app.data;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import mx.edu.greengates.ia_question_app.R;
-import mx.edu.greengates.ia_question_app.data.model.WriteIntoUserCSV;
-
+import mx.edu.greengates.ia_question_app.data.model.Results;
 
 public class Result extends AppCompatActivity {
 
-    Questions_multiple_choice results = new Questions_multiple_choice();
-    private List<String> FinishedAns = results.getFinishedAns();
-    private List<String>  FinishedQuestions = results.getFinishedQuestions();
-    private List<String> Result = results.getResult();
+    private Questions_multiple_choice quizzes;
+    private List<String> FinishedAns;
+    private List<String>  FinishedQuestions;
+    private List<String> Result;
+    private Results info;
 
-    private String username;
-    private String subject;
-    private String time;
-    private String date;
-    private int count = 0;
-    private List<List<String>> list = null;
 
     private TableLayout mTableLayout;
+    ProgressDialog mProgressBar;
+    int count = 0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-        Intent intent = getIntent();
-        username = intent.getStringExtra("Username");
-        Intent intent1 = getIntent();
-        subject = intent1.getStringExtra("Subject");
-        Intent intent2 = getIntent();
-        time = intent2.getStringExtra("Time");
-        Intent intent3 = getIntent();
-        date = intent3.getStringExtra("Date");
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        Button go_Home = findViewById(R.id.btn_go_home);
-        go_Home.setOnClickListener((View.OnClickListener)this);
-
-        TextView accuracy_rate = findViewById(R.id.accuracy_rate);
-        TextView totalScore = findViewById(R.id.score);
-
-        TableLayout tableLayout = findViewById(R.id.tablelayout);
-        tableLayout.removeAllViews();
-
-
-        int score = getIntent().getIntExtra("score", 0);
-
-        int Accuracy_rate;
-        Accuracy_rate = (score/4)*100;
-
-        accuracy_rate.setText(Accuracy_rate);
-        totalScore.setText(score);
-
-        String[] userData = {username, String.valueOf(score), String.valueOf(accuracy_rate),time,date,subject};
-        WriteIntoUserCSV writer = new WriteIntoUserCSV(this,"Users_record.csv");
-
-
-        try{
-            writer.writeUserDataCSV("Users_record.csv",userData);
-        }catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-
-        mTableLayout = findViewById(R.id.tablePlayers);
+        info = (Results) getApplicationContext();
+        mProgressBar = new ProgressDialog(this);
+        mTableLayout = (TableLayout) findViewById(R.id.tablePlayers);
         mTableLayout.setStretchAllColumns(true);
+
         startLoadData();
-
-        int i = FinishedQuestions.size();
-
-        while ( count > i ){
-            list = Collections.singletonList(Arrays.asList(
-                    String.valueOf((count + 1)),
-                    FinishedQuestions.get(count),
-                    FinishedAns.get(count),
-                    Result.get(count))
-
-            );
-            count ++;
-        }
     }
+
 
 
     public void startLoadData() {
+        mProgressBar.setCancelable(false);
+        mProgressBar.setMessage("Fetching Results..");
+        mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressBar.show();
         new LoadDataTask().execute(0);
     }
+
+    public Records[] getResults_info() {
+        // info = new Results();
+        FinishedQuestions = info.getFinishedQuestions();
+        FinishedAns = info.getFinishedAns();
+        Result = info.getResult();
+
+        //create a list that have been solved, (FinishedQuestions, FinishedAns and Result are come from Questions_multiple_choice)
+        Records[] data = new Records[4];
+        while (count < FinishedQuestions.size()){
+            data[count] = new Records(count,FinishedQuestions.get(count),FinishedAns.get(count),Result.get(count));
+            count ++;
+        }
+        return data;
+    }
+
     public void loadData() {
         int leftRowMargin=0;
         int topRowMargin=0;
@@ -118,85 +79,88 @@ public class Result extends AppCompatActivity {
         textSize = (int) getResources().getDimension(R.dimen.font_size_verysmall);
         smallTextSize = (int) getResources().getDimension(R.dimen.font_size_small);
         mediumTextSize = (int) getResources().getDimension(R.dimen.font_size_medium);
-
-
-        int rows = list.size();
-        getSupportActionBar().setTitle("Players (" + String.valueOf(rows) + ")");
+        mx.edu.greengates.ia_question_app.data.Result results = new Result();
+        Records[] data = results.getResults_info();
+        int rows = data.length;
+        //add title
+        getSupportActionBar().setTitle("Results");
         TextView textSpacer = null;
         mTableLayout.removeAllViews();
-
+        //for title
         for(int i = -1; i < rows; i ++) {
-             Records row = null;
+            Records row = null;
             if (i > -1)
-                row = (Records) list.get(i);
+                row = data[i];
             else {
                 textSpacer = new TextView(this);
                 textSpacer.setText("");
             }
-
-            final TextView tv = new TextView(this);
-            tv.setLayoutParams(new
+// first row (no)
+//save the data (no) into TextView
+            final TextView row1 = new TextView(this);
+            row1.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
-            tv.setGravity(Gravity.LEFT);
-            tv.setPadding(5, 15, 0, 15);
+            row1.setGravity(Gravity.LEFT);
+            row1.setPadding(5, 15, 0, 15);
             if (i == -1) {
-                tv.setText("No");
-                tv.setBackgroundColor(Color.parseColor("#f0f0f0"));
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
+                row1.setText("No");
+                row1.setBackgroundColor(Color.parseColor("#f0f0f0"));
+                row1.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             }
             else {
-                tv.setText(String.valueOf(row.getNo()));
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+                //displaying (no) on the screen
+                row1.setText(String.valueOf(row.getNo()));
+                row1.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             }
-
-            final TextView tv2 = new TextView(this);
-            tv2.setLayoutParams(new
+// second row (Question)
+            final TextView row2 = new TextView(this);
+            row2.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
-            tv2.setGravity(Gravity.LEFT);
-            tv2.setPadding(5, 15, 0, 15);
+            row2.setGravity(Gravity.LEFT);
+            row2.setPadding(5, 15, 0, 15);
             if (i == -1) {
-                tv2.setText("Question");
-                tv2.setBackgroundColor(Color.parseColor("#f0f0f0"));
-                tv2.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
+                row2.setText("Question");
+                row2.setBackgroundColor(Color.parseColor("#f0f0f0"));
+                row2.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             }
             else {
-                tv2.setText(row.getQuestion());
+                row2.setText(row.getQuestion());
             }
-
-            final TextView tv3 = new TextView(this);
-            tv3.setLayoutParams(new
+// third row (Answer)
+            final TextView row3 = new TextView(this);
+            row3.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
-            tv3.setGravity(Gravity.LEFT);
-            tv3.setPadding(5, 15, 0, 15);
+            row3.setGravity(Gravity.LEFT);
+            row3.setPadding(5, 15, 0, 15);
             if (i == -1) {
-                tv3.setText("Answer");
-                tv3.setBackgroundColor(Color.parseColor("#f0f0f0"));
-                tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
+                row3.setText("Answer");
+                row3.setBackgroundColor(Color.parseColor("#f0f0f0"));
+                row3.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             }
             else {
-                tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-                tv3.setText(row.getAnswer());
+                row3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+                row3.setText(row.getAnswer());
             }
-
-            final TextView tv4 = new TextView(this);
-            tv3.setLayoutParams(new
+// forth row (result)
+            final TextView row4 = new TextView(this);
+            row4.setLayoutParams(new
                     TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
-            tv3.setGravity(Gravity.LEFT);
-            tv3.setPadding(5, 15, 0, 15);
+            row4.setGravity(Gravity.LEFT);
+            row4.setPadding(5, 15, 0, 15);
             if (i == -1) {
-                tv3.setText("Result");
-                tv3.setBackgroundColor(Color.parseColor("#f0f0f0"));
-                tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
+                row4.setText("Result");
+                row4.setBackgroundColor(Color.parseColor("#f0f0f0"));
+                row4.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             }
             else {
-                tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-                tv3.setText(row.getResult());
+                row4.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+                row4.setText(row.getResult());
             }
-
+// add rows to the table
             final TableRow tr = new TableRow(this);
             tr.setId(i + 1);
             TableLayout.LayoutParams trParams = new
@@ -204,13 +168,19 @@ public class Result extends AppCompatActivity {
                     TableLayout.LayoutParams.WRAP_CONTENT);
             trParams.setMargins(leftRowMargin, topRowMargin, rightRowMargin, bottomRowMargin);
             tr.setPadding(0,0,0,0);
+//adding all data for a column to tr
             tr.setLayoutParams(trParams);
-            tr.addView(tv);
-            tr.addView(tv2);
-            tr.addView(tv3);
-            tr.addView(tv4);
-            mTableLayout.addView(tr, trParams);
+            tr.addView(row1);
+            tr.addView(row2);
+            tr.addView(row3);
+            tr.addView(row4);
 
+
+
+            //setting tr to mTableLayout
+            //repeat from the firth row until all rows are sved into mTableLayout
+            mTableLayout.addView(tr, trParams);
+            // add ruled line
             if (i > -1) {
                 final TableRow trSep = new TableRow(this);
                 TableLayout.LayoutParams trParamsSep = new
@@ -243,6 +213,7 @@ public class Result extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
+            mProgressBar.hide();
             loadData();
         }
         @Override
@@ -252,9 +223,4 @@ public class Result extends AppCompatActivity {
         protected void onProgressUpdate(Integer... values) {
         }
     }
-
-
-
-
-
 }
